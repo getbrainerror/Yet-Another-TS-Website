@@ -29,6 +29,7 @@ function getResult() {
         $tsstatus = getTeamspeakServerStatus();
         $stop = microtime(true);
         return json_encode(array(
+            "success" => true,
             "data" => $tsstatus,
             "generated" => date('d-m-Y H:i:s'),
             "timeRequired" => $stop - $start
@@ -45,26 +46,40 @@ function scriptFail($error) {
         "error" => $error
     )));
 }
+
+function serverIsOffline(){
+  die(json_encode(array(
+      "success" => false,
+      "id" => "script_error",
+      "message" => "Server is Offline",
+  )));
+}
 function exception_error_handler($errno, $errstr, $errfile, $errline) {
     scriptFail("[$errfile @ $errline] " . $errstr);
 }
 function getTeamspeakServerStatus() {
-  
+
     $tsAdmin = getTeamspeakConnection();
     if ($tsAdmin->isOffline()){
-          throw new Exception("Server is offline");
+      errorMessage("server_offline", "Server ist Offline!");
     }
     $response = $tsAdmin->getInfo();
     if ($response) {
+      $onlineUsers = Array();
+        foreach ($tsAdmin->clientList() as $client) {
+            array_push($onlineUsers, htmlspecialchars($client->__toString()));
+
+        }
         return array(
-            "success"           => $response["virtualserver_status"]->toString() == "online",
+            "online"           => $response["virtualserver_status"]->toString() == "online",
             "name"              => $response["virtualserver_name"]->toString(),
             "clientsonline"     => $response["virtualserver_clientsonline"] - $response["virtualserver_queryclientsonline"],
             "maxclients"        => $response["virtualserver_maxclients"],
             "version"           => TeamSpeak3_Helper_Convert::versionShort($response["virtualserver_version"]->toString())->toString(),
             "uptime"            => TeamSpeak3_Helper_Convert::seconds($response["virtualserver_uptime"], false, "%dd %02dh %02dm"),
             "averagePacketloss" => $response["virtualserver_total_packetloss_total"]->toString(),
-            "averagePing"       => $response["virtualserver_total_ping"]->toString()
+            "averagePing"       => $response["virtualserver_total_ping"]->toString(),
+            "onlineUsers"       => $onlineUsers,
         );
     } else {
         return array(

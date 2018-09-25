@@ -28,7 +28,8 @@ function getTeamspeakConnection($arguments = '') {
         $sport  = $config['teamspeak']['server_port'];
         $qport  = $config['teamspeak']['query_port'];
         $nickname  = $config['teamspeak']['nickname'];
-        $tsNodeHost = TeamSpeak3::factory("serverquery://$host:$qport/?nickname=$nickname");
+        $conArgs  = $config['teamspeak']['args'];
+        $tsNodeHost = TeamSpeak3::factory("serverquery://$host:$qport/?nickname=$nickname&$conArgs");
         $tsNodeHost->login($user, $passwd);
         return $tsNodeHost->serverGetByPort($sport);
     } catch (Exception $e) {

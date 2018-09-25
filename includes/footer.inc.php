@@ -15,9 +15,6 @@
       })
     </script>
 
-    <script>
-      var apiurl = "api/status.php";
-    </script>
     <script src="js/ts.js"></script>
 
   </body>

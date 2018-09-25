@@ -1,4 +1,4 @@
-#Yet-another-Teamspeak-Website WIP
+# Yet-another-Teamspeak-Website WIP
 This Project is Work-in-Progress.
 You shouldnt use it yet
 

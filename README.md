@@ -1,10 +1,11 @@
 # Yet-another-Teamspeak-Website WIP
 This Project is Work-in-Progress.
-You shouldnt use it yet
+You shouldn't use it yet
 
 Stuff that should work:
 - Teamspeak Server Status
 - List Groups on Sidebar
+- Site structure
 
 Stuff that is planned:
 - An better Serverbrowser than the TS3 Libary

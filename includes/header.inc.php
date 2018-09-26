@@ -10,7 +10,12 @@
     <title><?php echo $config['siteName'] . " - " . $pageName; ?></title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <?php
+      //Custom CSS from Config
+      if(isset($config['customCSS']) && !empty($config['customCSS'])){
+        echo($config['customCSS']);
+      }
+     ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- TeamSpeak Custom Style -->
     <link href="css/main.css" rel="stylesheet">

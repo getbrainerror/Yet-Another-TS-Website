@@ -96,6 +96,7 @@ function checkGroupList() {
         url: "api/grouplist.php",
         success: function (json) {
             hideGrouplistSpinner();
+            showGrouplist();
             console.log(json);
             if (json.data && json.success) {
               var result = '';
@@ -110,10 +111,10 @@ function checkGroupList() {
                         result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top" data-html="true" title="Online seit ' + user['onlineTime'] + '<br />AFK seit ' + user['afkTime'] + '"><span><i class="fas fa-fw fa-circle text-success"></i> ' + user['nickname'] + '</span><span class="badge badge-pill badge-secondary">AFK</span></li>';
 
                       } else {
-                        result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top" title="Online seit  ' + user['onlineTime'] + '"><span><i class="fas fa-fw fa-circle text-success"></i> ' + user['nickname'] + '</span></li>';
+                        result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top" title="Online seit  ' + user['onlineTime'] + '"><span><i class="fas fa-fw fa-circle text-success"></i> ' + user['nickname'] + '</span><span class="badge badge-success">Online</span></li>';
                       }
                     } else {
-                      result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top"><span><i class="far fa-fw fa-circle text-muted"></i> ' + user['nickname'] + '</span></li>';
+                      result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top"><span><i class="far fa-fw fa-circle text-muted"></i> ' + user['nickname'] + '</span><span class="badge badge-danger">Offline</span></li>';
                     }
 
 
@@ -165,16 +166,4 @@ function showGrouplist(){
   $('#grouplist').removeAttr('hidden');
   $('#grouplist-error').attr('hidden', 'hidden');
 
-}
-
-function fillServerInfoGenerated(resultGrouplistGenerated){
-  if(resultGrouplistGenerated){
-    resultGrouplistGenerated = 'Zuletzt aktuallisiert: ' + resultGrouplistGenerated;
-
-  } else {
-    resultGrouplistGenerated = 'Error';
-
-  }
-  $('#grouplist-last-refresh').tooltip('hide')
-            .attr('data-original-title', resultGrouplistGenerated);
 }

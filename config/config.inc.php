@@ -6,7 +6,7 @@ $config = array(
   'publicTeamspeakAdress' => 'localhost', //get Displayed in the Server Status
   //'customCSS' => '<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-gJWVjz180MvwCrGGkC4xE5FjhWkTxHIR/+GgT8j2B3KKMgh6waEjPgzzh7lL7JZT" crossorigin="anonymous">',
   'customCSS' => '',
-  'teamspeak' => Array(
+  'teamspeak' => array(
     'nickname' => 'ServerSlave' . rand(0,100),
     'host' => 'localhost',
     'user' => 'serveradmin',
@@ -15,7 +15,7 @@ $config = array(
     'query_port' => 10011,
     'args' => "use_offline_as_virtual=1&no_query_clients=1",
   ),
-  'links' => Array(
+  'links' => array(
     //Always use fa-fw for correct formatting
     //["FONTAWESOME ICON Classes","LINKNAME","URL"]
     ["fab fa-fw fa-teamspeak","TeamSpeak: Join Me", "#"],

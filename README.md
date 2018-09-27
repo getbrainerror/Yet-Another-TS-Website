@@ -16,3 +16,4 @@ Stuff that is planned:
 - A banner generator for the ts server (Server Status, and if specified an user online note)
 - Set rules which can be shown at the ts verification
 - Impress and privacy site for dsvgo conformity
+- Multi language

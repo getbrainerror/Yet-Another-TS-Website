@@ -46,6 +46,14 @@
                   <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-bolt"></i> Gruppenzuweiser<?php if($pageRequest == 'group-assigner'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
               </ul>
+              <ul class="navbar-nav mr-0">
+                <li class="nav-item pull-right <?php if($pageRequest == 'login'){?>active<?php } ?>">
+                  <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-sign-in-alt"></i> Login<?php if($pageRequest == 'login'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
+                </li>
+                <li class="nav-item pull-right <?php if($pageRequest == 'register'){?>active<?php } ?>">
+                  <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-user-plus"></i> Registrieren<?php if($pageRequest == 'register'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
+                </li>
+              </ul>
         </div>
       </nav>
     </header>

@@ -6,6 +6,8 @@ $config = array(
   'publicTeamspeakAdress' => 'localhost', //get Displayed in the Server Status
   //'customCSS' => '<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-gJWVjz180MvwCrGGkC4xE5FjhWkTxHIR/+GgT8j2B3KKMgh6waEjPgzzh7lL7JZT" crossorigin="anonymous">',
   'customCSS' => '',
+  //Max display of news
+  'newsLimit' => 5,
   'teamspeak' => array(
     'nickname' => 'ServerSlave' . rand(0,100),
     'host' => 'localhost',

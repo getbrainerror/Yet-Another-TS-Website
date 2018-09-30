@@ -6,60 +6,64 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <div class="card mb-4">
-      <div class="card-header">
-        <span class="float-left"><h5>Neues 1</h5></span>
-        <span class="float-right">
-          <i class="fas fa-fw fa-user"></i> getBrainError
-          <i class="fas fa-fw fa-calendar "></i> 18.07.2020
-          <i class="fas fa-fw fa-clock"></i> 20:30
-        </span>
-      </div>
-        <div class="card-body">
-          <p class="card-text">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-
-          </p>
-        </div>
-    </div>
-      <div class="card mb-4">
-        <div class="card-header">
-          <span class="float-left"><h5>Neues 2</h5></span>
-          <span class="float-right">
-            <i class="fas fa-fw fa-user"></i> getBrainError
-            <i class="fas fa-fw fa-calendar "></i> 18.07.2021
-            <i class="fas fa-fw fa-clock"></i> 20:30
-          </span>
-        </div>
-          <div class="card-body">
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-            </p>
-          </div>
-    </div>
+      <?php
+        require_once(__DIR__ . '/../includes/queries.inc.php');
+        require_once(__DIR__ . '/../lib/parsedown/Parsedown.php');
+        $pdo = new PDO('mysql:host=localhost;dbname=yatw', 'root', '');
+        $statement = $pdo->prepare($pdoQueries['newsget']);
+        $pageOffset = 0;
+        if(isset($_GET['newspage']) && !empty($_GET['newspage'])){
+          if($_GET['newspage'] > 0){
+            $pageOffset = $_GET['newspage'] * $config['newsLimit'];
+          }
+        }
+        $statement->bindParam(1, $config['newsLimit'], PDO::PARAM_INT);
+        $statement->bindParam(2, $pageOffset, PDO::PARAM_INT);
+        if($statement->execute()){
+          while($row = $statement->fetch()) {
+            $date = strtotime($row['create_time']);
+            ?>
             <div class="card mb-4">
               <div class="card-header">
-                <span class="float-left"><h5>Neuesn 3</h5></span>
+                <span class="float-left"><h5><?php echo($row['title']); ?></h5></span>
                 <span class="float-right">
-                  <i class="fas fa-fw fa-user"></i> getBrainError
-                  <i class="fas fa-fw fa-calendar "></i> 18.07.2022
-                  <i class="fas fa-fw fa-clock"></i> 20:30
+                  <i class="fas fa-fw fa-user"></i> <?php echo($row['nickname']); ?>
+                  <i class="fas fa-fw fa-calendar"></i> <?php echo(date('d.m.Y', $date)); ?>
+                  <i class="fas fa-fw fa-clock"></i> <?php echo(date('H:i', $date)); ?>
                 </span>
               </div>
                 <div class="card-body">
                   <p class="card-text">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+                    <?php
+                    $parsedown = new Parsedown();
+                    echo($parsedown->text($row['text'])); 
+                    ?>
                   </p>
                 </div>
             </div>
-        </div>
-        <?php
-        require_once(__DIR__ . '/../includes/sidebar.inc.php');
-        ?>
-      </div>
+          <?php
+              }
+            }
+          ?>
+          <nav>
+            <ul class="pagination justify-content-center">
+              <?php
+                $statement = $pdo->prepare($pdoQueries['newscount']);
+                $count = 0;
+                if($statement->execute()){
+                  while($row = $statement->fetch()) {
+                    $count = $row['count'];
+                  }
+                }
+
+                for ($i = 0; $i <= $count / $config['newsLimit']; $i++) {
+                    echo '<li class="page-item"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';
+                }
+              ?>
+            </ul>
+          </nav>
+  </div>
+  <?php
+    require_once(__DIR__ . '/../includes/sidebar.inc.php');
+  ?>
+</div>

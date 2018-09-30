@@ -4,7 +4,7 @@ if(count($config["links"]) > 0) {
 <div class="card mb-4">
   <div class="card-header"><h5><i class="fas fa-fw fa-globe-americas"></i> Links</h5></div>
     <div class="card-body">
-      <p class="card-text">
+      <div class="card-text">
         <ul class="list-unstyled text-primary">
           <?php
           require_once __DIR__ . '/../config/config.inc.php';
@@ -15,7 +15,7 @@ if(count($config["links"]) > 0) {
             }
           ?>
         </ul>
-      </p>
+      </div>
     </div>
 </div>
 <?php

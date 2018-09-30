@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once(__DIR__ . '/config/config.inc.php');
 require_once(__DIR__ . '/config/pages.inc.php');
 

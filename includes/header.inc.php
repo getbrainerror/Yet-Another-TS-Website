@@ -46,16 +46,42 @@
                   <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-bolt"></i> Gruppenzuweiser<?php if($pageRequest == 'group-assigner'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
               </ul>
-              <ul class="navbar-nav mr-0">
+
+              <ul class="navbar-nav ml-auto">
+
+                <?php
+                  if(!isset($_SESSION['userid'])) {
+                ?>
                 <li class="nav-item pull-right <?php if($pageRequest == 'login'){?>active<?php } ?>">
-                  <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-sign-in-alt"></i> Login<?php if($pageRequest == 'login'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
+                  <a class="nav-link" href="?page=login"><i class="fas fa-fw fa-sign-in-alt"></i> Login<?php if($pageRequest == 'login'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
                 <li class="nav-item pull-right <?php if($pageRequest == 'register'){?>active<?php } ?>">
-                  <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-user-plus"></i> Registrieren<?php if($pageRequest == 'register'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
+                  <a class="nav-link" href="?page=register"><i class="fas fa-fw fa-user-plus"></i> Registrieren<?php if($pageRequest == 'register'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
+                <?php
+                } else {
+                ?>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                    Eingeloggt als <?php echo($_SESSION['nickname']); ?>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="?page=dashboard">Dashboard</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout.php">Ausloggen</a>
+                  </div>
+                </li>
+                <?php
+                }
+                ?>
               </ul>
         </div>
       </nav>
     </header>
+    <?php if(isset($_GET['logged-out'])){ ?>
+      <div class="alert alert-primary" role="alert">
+        Du wurdest ausgeloggt!
+      </div>
+    <?php } ?>
 
     <main role="main" class="container">

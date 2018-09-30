@@ -4,6 +4,10 @@ $pdoQueries = array(
   'userlist' => "SELECT * FROM user",
   'useradd' => "INSERT INTO user (nickname, mail, password_hash) VALUES(?, ?, ?);",
   'userdel' => "",
-  'userlogin' => "SELECT password_hash, nickname FROM user WHERE mail = ? LIMIT 1",
+  'userlogin' => "SELECT password_hash, nickname, id FROM user WHERE mail = ? LIMIT 1",
+  'usermemberof' => "SELECT groups.groupname FROM user_group_assign INNER JOIN groups ON user_group_assign.group_id = groups.id where user_group_assign.user_id = 4",
+
+  'newsget' => "SELECT title, text, create_time, nickname FROM news INNER JOIN user ON news.userid=user.id WHERE public = 1 ORDER BY create_time DESC, news.id DESC LIMIT ? OFFSET ?",
+  'newscount' => "SELECT COUNT(id) AS count FROM news",
 );
 ?>

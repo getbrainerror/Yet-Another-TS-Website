@@ -24,7 +24,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <a class="navbar-brand" href="?page=home"><i class="fab fa-teamspeak"></i> TeamSpeak Website</a>
+        <a class="navbar-brand" href="?page=home"><?php echo($config['navbarIcon'] . ' ' . $config['siteName']); ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,8 +33,8 @@
                 <li class="nav-item <?php if($pageRequest == 'home'){?>active<?php } ?>">
                   <a class="nav-link" href="?page=home"><i class="fas fa-fw fa-home"></i> Startseite<?php if($pageRequest == 'home'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
-                <li class="nav-item <?php if($pageRequest == 'serverbrowser'){?>active<?php } ?>">
-                  <a class="nav-link" href="?page=serverbrowser"><i class="fas fa-fw fa-list-ul"></i> Serverbrowser<?php if($pageRequest == 'serverbrowser'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
+                <li class="nav-item <?php if($pageRequest == 'server-viewer'){?>active<?php } ?>">
+                  <a class="nav-link" href="?page=server-viewer"><i class="fas fa-fw fa-list-ul"></i> Server Viewer<?php if($pageRequest == 'server-viewer'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
                 <li class="nav-item <?php if($pageRequest == 'rules'){?>active<?php } ?>">
                   <a class="nav-link" href="?page=rules"><i class="fas fa-fw fa-gavel"></i> Regeln<?php if($pageRequest == 'rules'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
@@ -65,11 +65,11 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     Eingeloggt als <?php echo($_SESSION['nickname']); ?>
                   </a>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="?page=dashboard">Dashboard</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php">Ausloggen</a>
-                  </div>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a class="dropdown-item" href="?page=dashboard">Dashboard</a></li>
+                    <li class="dropdown-divider" style="list-style: none; list-style-type:none;"></li>
+                    <li><a class="dropdown-item" href="logout.php">Ausloggen</a></li>
+                  </ul>
                 </li>
                 <?php
                 }

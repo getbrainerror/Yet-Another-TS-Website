@@ -19,7 +19,7 @@ function pingTeamspeakServer() {
 }
 
 
-function getTeamspeakConnection($arguments = '') {
+function getTeamspeakConnection() {
     try {
         global $config;
         $host   = $config['teamspeak']['host'];
@@ -36,3 +36,4 @@ function getTeamspeakConnection($arguments = '') {
         throw $e;
     }
 }
+?>

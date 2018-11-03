@@ -3,6 +3,7 @@ $config = array(
   'debug' => true,
   'expireTime' => 1,
   'siteName' => 'Another TS Website',
+  'navbarIcon' => '<i class="fab fa-teamspeak"></i>', // Icon from anywhere (Fontawesome, Bootstrap, an Image or empty for no icon)
   'publicTeamspeakAdress' => 'localhost', //get Displayed in the Server Status
   //'customCSS' => '<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-gJWVjz180MvwCrGGkC4xE5FjhWkTxHIR/+GgT8j2B3KKMgh6waEjPgzzh7lL7JZT" crossorigin="anonymous">',
   'customCSS' => '',
@@ -10,6 +11,7 @@ $config = array(
   'newsLimit' => 5,
   'teamspeak' => array(
     'nickname' => 'ServerSlave' . rand(0,100),
+    'nicknameGuest' => 'ServerSlaveGuest' . rand(0,100),
     'host' => 'localhost',
     'user' => 'serveradmin',
     'password' => 'WsrW78Zf',
@@ -28,6 +30,9 @@ $config = array(
   ),
   'listedUserGroupsTitle' => "Das Team",
   'listedUserGroups' => [6,7],
+  'serverViewer' => array(
+    'ignoreSpacer' => true,
+  ),
 );
 
  ?>

@@ -2,7 +2,8 @@
 // error_reporting(0);
 header('Content-Type: application/json');
 set_error_handler("exception_error_handler", E_ALL);
-require_once(__DIR__ . "/../includes/tsutils.inc.php");
+require_once(__DIR__ . '/../config/config.inc.php');
+require_once(__DIR__ . '/../includes/tsutils.inc.php');
 require_once(__DIR__ . '/../lib/simplephpcache/cache.class.php');
 
 //date_default_timezone_set($config["general"]["timezone"]);
@@ -58,7 +59,7 @@ function exception_error_handler($errno, $errstr, $errfile, $errline) {
     scriptFail("[$errfile @ $errline] " . $errstr);
 }
 function getTeamspeakServerStatus() {
-
+    global $config;
     $tsAdmin = getTeamspeakConnection();
     if ($tsAdmin->isOffline()){
       errorMessage("server_offline", "Server ist Offline!");
@@ -71,15 +72,16 @@ function getTeamspeakServerStatus() {
 
         }
         return array(
-            "online"           => $response["virtualserver_status"]->toString() == "online",
-            "name"              => $response["virtualserver_name"]->toString(),
-            "clientsonline"     => $response["virtualserver_clientsonline"] - $response["virtualserver_queryclientsonline"],
-            "maxclients"        => $response["virtualserver_maxclients"],
-            "version"           => TeamSpeak3_Helper_Convert::versionShort($response["virtualserver_version"]->toString())->toString(),
-            "uptime"            => TeamSpeak3_Helper_Convert::seconds($response["virtualserver_uptime"], false, "%dd %02dh %02dm"),
-            "averagePacketloss" => $response["virtualserver_total_packetloss_total"]->toString(),
-            "averagePing"       => $response["virtualserver_total_ping"]->toString(),
-            "onlineUsers"       => $onlineUsers,
+          "online"           => $response["virtualserver_status"]->toString() == "online",
+          "name"              => $response["virtualserver_name"]->toString(),
+          "publicAdress"      => $config["publicTeamspeakAdress"],
+          "clientsonline"     => $response["virtualserver_clientsonline"] - $response["virtualserver_queryclientsonline"],
+          "maxclients"        => $response["virtualserver_maxclients"],
+          "version"           => TeamSpeak3_Helper_Convert::versionShort($response["virtualserver_version"]->toString())->toString(),
+          "uptime"            => TeamSpeak3_Helper_Convert::seconds($response["virtualserver_uptime"], false, "%dd %02dh %02dm"),
+          "averagePacketloss" => $response["virtualserver_total_packetloss_total"]->toString(),
+          "averagePing"       => $response["virtualserver_total_ping"]->toString(),
+          "onlineUsers"       => $onlineUsers,
         );
     } else {
         return array(

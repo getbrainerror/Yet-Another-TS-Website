@@ -23,8 +23,30 @@ if(isset($_POST['mail']) && isset($_POST['password'])) {
 
       if(!empty($hash)){
         if(password_verify($password, $hash)){
+          $groups = array();
+
+          $statement = $pdo->prepare($pdoQueries['usermemberof']);
+          $statement->bindParam(1, $userid, PDO::PARAM_INT);
+          if($statement->execute()){
+            while($row = $statement->fetch()) {
+              $groups[] = $row['groupname'];
+            }
+          }
+          $verified = 0;
+          $statement = $pdo->prepare($pdoQueries['userverified']);
+          $statement->bindParam(1, $userid, PDO::PARAM_INT);
+
+          if($statement->execute()){
+            while($row = $statement->fetch()) {
+              $verified = $row;
+            }
+          }
+
           $_SESSION['nickname'] = $nick;
           $_SESSION['userid'] = $userid;
+          $_SESSION['groups'] = $groups;
+          $_SESSION['verified'] = $verified;
+          
           header('Location: /?page=dashboard');
         } else {
           header('Location: /?page=login&error=1');

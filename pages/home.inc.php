@@ -25,8 +25,8 @@
             ?>
             <div class="card mb-4">
               <div class="card-header">
-                <span class="float-left"><h5><?php echo($row['title']); ?></h5></span>
-                <span class="float-right">
+                <span class="float-md-left"><h5><?php echo($row['title']); ?></h5></span>
+                <span class="float-md-right">
                   <i class="fas fa-fw fa-user"></i> <?php echo($row['nickname']); ?>
                   <i class="fas fa-fw fa-calendar"></i> <?php echo(date('d.m.Y', $date)); ?>
                   <i class="fas fa-fw fa-clock"></i> <?php echo(date('H:i', $date)); ?>
@@ -36,7 +36,7 @@
                   <p class="card-text">
                     <?php
                     $parsedown = new Parsedown();
-                    echo($parsedown->text($row['text'])); 
+                    echo($parsedown->text($row['text']));
                     ?>
                   </p>
                 </div>
@@ -50,14 +50,22 @@
               <?php
                 $statement = $pdo->prepare($pdoQueries['newscount']);
                 $count = 0;
+                $activePage = 0;
+                if(isset($_GET['newspage'])){
+                  $activePage = $_GET['newspage'];
+                }
                 if($statement->execute()){
                   while($row = $statement->fetch()) {
                     $count = $row['count'];
                   }
                 }
 
-                for ($i = 0; $i <= $count / $config['newsLimit']; $i++) {
-                    echo '<li class="page-item"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';
+                for ($i = 0; $i < $count / $config['newsLimit']; $i++) {
+                    if($i == $activePage){
+                      echo '<li class="page-item active"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';                      
+                    } else{
+                      echo '<li class="page-item"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';
+                    }
                 }
               ?>
             </ul>

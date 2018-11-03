@@ -1,18 +1,16 @@
 # Yet-another-Teamspeak-Website WIP
 This Project is Work-in-Progress.
-You shouldn't use it yet
+You shouldn't use it now (give it some time)
 
 Stuff that should work:
 - Teamspeak Server Status
 - List Groups on Sidebar
-- Site bone
 - Login (only the login, not the register part)
 - Display News from Mysql and split the news to multiple pages
+- Server Viewer
 
 Stuff that is planned:
-- An better Serverbrowser than the TS3 Libary
-- User login
-- Verify your user with your ts ident
+- Verify your user with their ts uuid
 - A news System, where user (or user groups) can add entrys
 - An group assigner for teamspeak3 Groups (Should be usable without user login, via PM Code and IP comparison)
 - Registered users can select additional Teamspeak Groups
@@ -23,6 +21,7 @@ Stuff that is planned:
 - Set rules which can be shown at the ts verification
 - Impress and privacy site for dsvgo conformity
 - Multi language
+- Make the Code beautiful again (or at least a little bit more then now)
 
 # Used Libaries and other Stuff
 - Bootstrap 4 <https://github.com/twbs/bootstrap>

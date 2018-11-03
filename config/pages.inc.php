@@ -4,9 +4,9 @@ $pages = array(
     'pageName' => 'Wilkommen',
     'pageFile' => 'pages/home.inc.php',
   ),
-  'serverbrowser' => array(
-    'pageName' => 'Serverbrowser',
-    'pageFile' => 'pages/serverbrowser.inc.php',
+  'server-viewer' => array(
+    'pageName' => 'Server Viewer',
+    'pageFile' => 'pages/serverviewer.inc.php',
   ),
   'login' => array(
     'pageName' => 'Login',

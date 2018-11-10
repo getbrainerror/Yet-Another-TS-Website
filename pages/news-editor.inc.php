@@ -1,6 +1,6 @@
 <?php
 
-//Only let members of the
+
 if(isset($_SESSION['userid'])){
   if(!(in_array('news-editor', $_SESSION['groups']) || in_array('news-editor-safemode', $_SESSION['groups']))){
     header('Location: ?page=home&noperm=1');

@@ -39,9 +39,11 @@
                 <li class="nav-item <?php if($pageRequest == 'rules'){?>active<?php } ?>">
                   <a class="nav-link" href="?page=rules"><i class="fas fa-fw fa-gavel"></i> Regeln<?php if($pageRequest == 'rules'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
+                <!--
                 <li class="nav-item <?php if($pageRequest == 'banner'){?>active<?php } ?>">
                   <a class="nav-link" href="?page=banner"><i class="fas fa-fw fa-image"></i> Banner<?php if($pageRequest == 'banner'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>
+                -->
                 <li class="nav-item <?php if($pageRequest == 'group-assigner'){?>active<?php } ?>">
                   <a class="nav-link" href="?page=group-assigner"><i class="fas fa-fw fa-bolt"></i> Gruppenzuweiser<?php if($pageRequest == 'group-assigner'){?> <span class="sr-only">(aktuell Ausgewählt)</span><?php } ?></a>
                 </li>

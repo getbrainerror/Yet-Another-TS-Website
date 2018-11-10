@@ -1,17 +1,21 @@
 <div class="row">
-  <div class="col-md-12">
-    <h1 class="display-4 mb-4">Serverbrowser</h1>
-  </div>
-</div>
-<div class="row">
   <div class="col-md-8">
-    <div class="col-md-10 offset-md-1">
-      <div class="server-viewer">
-      <?php
+    <div class="card mb-4">
+      <div class="card-header">
+          <h5>
+            Server Viewer
+            <span class="float-right"><a href="#" id="server-viewer-emptytoggle" onclick="hideEmptyChannel()" class="text-body" title="Leere Channel ausblenden" data-toggle="tooltip" data-placement="top"><i class="fas fa-eye"></i></a></span>
+          </h5>
+      </div>
 
-      require_once(__DIR__ . '/../includes/serverviewer.inc.php');
-      echo(generateServerViewer());
-      ?>
+
+      <div class="card-body">
+            <div class="server-viewer">
+                <?php
+                require_once(__DIR__ . '/../includes/serverviewer.inc.php');
+                echo(generateServerViewer());
+                ?>
+            </div>
       </div>
     </div>
   </div>
@@ -19,3 +23,4 @@
     require_once(__DIR__ . '/../includes/sidebar.inc.php');
   ?>
 </div>
+<script src="js/ts-viewer.js"></script>

@@ -4,7 +4,7 @@
       <p class="card-text">
         <ul class="list-group" id="serverstatus" hidden>
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span><i class="fas fa-fw fa-link"></i> Server Adresse: </span><span id="status-server-address"><a href="ts3server://<?php echo($config['publicTeamspeakAdress'] . ':' . $config['teamspeak']['server_port']); ?>" class="badge badge-pill badge-primary"><?php echo($config['publicTeamspeakAdress']); ?></a></span>
+            <span><i class="fas fa-fw fa-link"></i> Server Adresse: </span><span id="status-server-address"><a href="ts3server://<?php echo($config['teamspeak']['publicTeamspeakAdress'] . ':' . $config['teamspeak']['server_port']); ?>" class="badge badge-pill badge-primary"><?php echo($config['teamspeak']['publicTeamspeakAdress']); ?></a></span>
           </li>
           <li id="status-all-users" class="list-group-item d-flex justify-content-between align-items-center" data-html="true" data-toggle="tooltip" data-placement="top" title="">
             <span><i class="fas fa-fw fa-user"></i> Online: </span><span id="status-online-users" class="badge badge-pill badge-primary"></span>

@@ -17,11 +17,13 @@ Stuff that is planned:
   registered -> Can select group yxc
   verified -> Can select group zyx  
   any added group -> Can select group qwe
-- A banner generator for the ts server (Server Status, and if specified an user online note)
 - Set rules which can be shown at the ts verification
 - Impress and privacy site for dsvgo conformity
 - Multi language
 - Make the Code beautiful again (or at least a little bit more then now)
+
+Stuff that will be eventually:
+- A banner generator for the ts server (Server Status, and if specified an user online note)
 
 # Used Libaries and other Stuff
 - Bootstrap 4 <https://github.com/twbs/bootstrap>

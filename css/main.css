@@ -28,40 +28,16 @@ body > .container {
 }
 
 /* Server Viewer */
-.server-viewer>ul,
-  .server-viewer>ul ul {
+.server-viewer ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+    padding-left: 1.5em;
+}
 
-  .server-viewer>ul ul {
-    margin-left: 1.0em;
-  }
-
-  .server-viewer>ul li {
-      margin-left: 0.35em;
-      border-left: thin solid #000;
-  }
-  .server-viewer>ul li:last-child {
-    border-left: none;
-  }
-
-  .server-viewer>ul li:before {
-    width: 0.9em;
-    height: 0.6em;
-    margin-right: 0.1em;
-    vertical-align: top;
-    border-bottom: thin solid #000;
-    content: "";
-    display: inline-block;
-  }
-
-  .server-viewer>ul li:last-child:before {
-    border-left: thin solid #000;
-  }
-
-
-  .server-viewer>ul li.server:before {
-    border-width: 0px !important;
-  }
+.server-viewer .spacer {
+   margin-top: 0.5rem;
+   margin-bottom: 0.5rem;
+}
+.server-viewer .client , .server-viewer .channel {
+ margin-top: 0.1rem;
+ margin-bottom: 0.1rem;
+}

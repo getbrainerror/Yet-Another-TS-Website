@@ -60,7 +60,7 @@ function showServerInfo(clientsonline, maxclients, clientsprecent, uptime, avera
   $('#status-ping').html(averagePing + 'ms');
   $('#status-packet-loss').html(averagePacketloss + ' %');
   $('#status-version').html(version);
-  $('#status-all-users').tooltip('hide')
+  $('#status-all-users').tooltip('hide');
   $('#status-all-users').attr('data-original-title', allOnlineUsers);
 }
 

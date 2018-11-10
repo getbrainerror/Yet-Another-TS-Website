@@ -1,11 +1,11 @@
-
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="display-4 mb-4">News</h1>
-  </div>
-</div>
 <div class="row">
   <div class="col-md-8">
+
+    <div class="card mb-4">
+      <div class="card-header">
+          <h5>News</h5>
+      </div>
+    </div>
       <?php
         require_once(__DIR__ . '/../includes/queries.inc.php');
         require_once(__DIR__ . '/../lib/parsedown/Parsedown.php');
@@ -62,7 +62,7 @@
 
                 for ($i = 0; $i < $count / $config['newsLimit']; $i++) {
                     if($i == $activePage){
-                      echo '<li class="page-item active"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';                      
+                      echo '<li class="page-item active"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';
                     } else{
                       echo '<li class="page-item"><a class="page-link" href="?newspage=' . $i . '">' . ($i + 1) . '</a></li>';
                     }

@@ -74,7 +74,7 @@ function getTeamspeakServerStatus() {
         return array(
           "online"           => $response["virtualserver_status"]->toString() == "online",
           "name"              => $response["virtualserver_name"]->toString(),
-          "publicAdress"      => $config["publicTeamspeakAdress"],
+          "publicAdress"      => $config['teamspeak']['publicTeamspeakAdress'],
           "clientsonline"     => $response["virtualserver_clientsonline"] - $response["virtualserver_queryclientsonline"],
           "maxclients"        => $response["virtualserver_maxclients"],
           "version"           => TeamSpeak3_Helper_Convert::versionShort($response["virtualserver_version"]->toString())->toString(),

@@ -8,7 +8,6 @@ function hideEmptyChannel() {
   });
 }
 
-$('#serverstatus');
 function showEmptyChannel() {
   $(document).ready(function() {
       $('.empty-channel').removeAttr('hidden');

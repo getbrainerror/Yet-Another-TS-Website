@@ -21,5 +21,12 @@
     </script>
 
     <script src="js/ts.js"></script>
+    <?php
+    if($pageRequest == "group-assigner"){
+    ?>
+    <script src="js/ts-group-assigner.js"></script>
+    <?php
+    }
+    ?>
   </body>
 </html>

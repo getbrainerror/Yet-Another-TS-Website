@@ -7,7 +7,6 @@ require_once(__DIR__ . "/../config/config.inc.php");
 require_once(__DIR__ . "/../includes/tsutils.inc.php");
 require_once(__DIR__ . '/../lib/simplephpcache/cache.class.php');
 
-//date_default_timezone_set($config["general"]["timezone"]);
 $c = new Cache(array(
   'name'      => 'serverstatus',
   'path'      => __DIR__ . '/../cache/',

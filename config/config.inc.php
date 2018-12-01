@@ -46,6 +46,18 @@ $config = array(
     ),
   ),
   'rulesSafeMode' => true, //Dont parse HTML. Useful if you let others edit this files. But useless if you let them edit the whole web directory
+
+  'groupAssigner' => array(
+    // You need to login and rebuild the cache on the dashboard as admin to apply changes
+    // TS Group ID - TS-Website Grouplevel (0 For everyone, 100 Admin Only)
+    //[groupid,requiredGroupLevel],
+    [16,0], //Teeworlds
+    [17,0], //Minecraft
+    [18,0], //Black Ops 3
+    [7,0]
+
+
+  ),
 );
 
  ?>

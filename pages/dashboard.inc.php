@@ -19,6 +19,10 @@
         <div class="alert alert-danger" role="alert">
           Du musst dein Account bestätigen: <a href="#" class="alert-link">Account jetzt bestätigen!</a>
         </div>
+        <div id="success-message" class="alert alert-success" role="alert" hidden>
+        </div>
+        <div id="error-message" class="alert alert-danger" role="alert" hidden>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -200,6 +204,38 @@
           </div>
         </div>
       </div>
+
+      <?php
+      }
+      if(in_array('admin', $_SESSION['groups'])){
+      ?>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5>Gruppenzuweiser</h5>
+          </div>
+          <div class="card-body">
+            <p>Diese Funktion wird nur benötigt falls du die Konfiguration geändert oder die TeamSpeak Gruppen verändert hast</p>
+            <button type="button" class="btn btn-info" onclick="buildCache();">Cache erneuern</button>
+          </div>
+        </div>
+      </div>
+      <script>
+      function buildCache() {
+          $.ajax({
+              url: "group-assigner.php?action=build-cache",
+              success: function (result) {
+                if(result == 'OK')
+                showSuccessMessage("<p>Vorgang wurde erfolgreich abgeschlossen.</p><p>Antwort vom Server: " + result) + "</p>";
+                else {
+                showErrorMessage("<p>Vorgang konnte nicht erfolgreich abgeschlossen werden</p><p>Antwort vom Server: " + result + "</p>");
+                }
+              },
+              error: function (result) {
+              }
+          });
+      }
+      </script>
       <?php
       }
       //Only for DEBUG
@@ -207,7 +243,29 @@
       ?>
 
     </div>
+    <script>
+    function showSuccessMessage(message){
+      $(document).ready(function() {
+          hideErrorMessage();
+          $('#success-message').removeAttr('hidden');
+          $("#success-message").html(message);
+      });
+    }
+    function showErrorMessage(message){
+      $(document).ready(function() {
+          hideSuccessMessage();
+          $('#error-message').removeAttr('hidden');
+          $("#error-message").html(message);
+      });
+    }
+    function hideErrorMessage(){
+      $('#error-message').attr('hidden','hidden');
+    }
+    function hideSuccessMessage(){
+      $('#error-message').attr('hidden','hidden');
+    }
 
+    </script>
   </div>
   <?php
   require_once(__DIR__ . '/../includes/sidebar.inc.php');

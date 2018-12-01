@@ -139,7 +139,6 @@ function generateTree($datas, $parent = "ts3", $depth=0){
 
 function getGroupIconByName($group) {
     global $tsAdmin;
-    global $config;
     $group = $tsAdmin->serverGroupGetByName($group);
       $localIcons = array(100, 200, 300, 400, 500, 600);
       $icon = '';

@@ -3,9 +3,8 @@
     <div class="card-body">
       <p class="card-text">
         <div id="grouplist">
-        
-        </div>
 
+        </div>
         <div id="grouplist-spinner" class="alert center text-center mb-4">
           <i class="fas fa-fw fa-4x fa-spinner fa-spin"></i>
         </div>

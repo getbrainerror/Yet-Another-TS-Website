@@ -12,7 +12,6 @@ function checkStatus() {
     $.ajax({
         url: "api/status.php",
         success: function (json) {
-            console.log(json);
             if (json.data && json.success) {
                 var clientsonline = json.data.clientsonline;
                 var maxclients = json.data.maxclients;
@@ -97,7 +96,6 @@ function checkGroupList() {
         success: function (json) {
             hideGrouplistSpinner();
             showGrouplist();
-            console.log(json);
             if (json.data && json.success) {
               var result = '';
 
@@ -116,13 +114,6 @@ function checkGroupList() {
                     } else {
                       result += '<li class="list-group-item d-flex justify-content-between align-items-center" data-toggle="tooltip" data-placement="top"><span><i class="far fa-fw fa-circle text-muted"></i> ' + user['nickname'] + '</span><span class="badge badge-danger">Offline</span></li>';
                     }
-
-
-
-
-                    console.log(group['groupName'] + ": " + user['nickname'] + " -> " + user['isOnline']);
-
-
                   });
                   result += '</ul>';
                 });
@@ -135,15 +126,11 @@ function checkGroupList() {
                   displayErrorGrouplist("Server is Offline");
                 }
             }
-
-
-
         },
         error: function (result) {
           displayErrorGrouplist(json.message);
         }
     })
-
 }
 
 function showGrouplistSpinner(){
@@ -165,5 +152,4 @@ function showGrouplist(){
   hideServerInfoSpinner();
   $('#grouplist').removeAttr('hidden');
   $('#grouplist-error').attr('hidden', 'hidden');
-
 }
